@@ -1,1 +1,0 @@
-<h2>Selamat datang, <?= $data['nama'] ?></h2>
