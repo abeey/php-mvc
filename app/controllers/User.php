@@ -19,4 +19,15 @@ class User extends Controller
         $this->view('user/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah()
+    {
+
+        if ($this->model('User_m')->tambahDataUser($_POST) > 0) {
+            header('Location: ' . BASEURL . '/User');
+            exit;
+        } else {
+            echo "ERROR";
+        }
+    }
 }
