@@ -26,11 +26,13 @@ class Database
         }
     }
 
+    // handle query
     public function query($query)
     {
         $this->stmt = $this->dbh->prepare($query);
     }
 
+    // filter masukan
     public function bind($param, $value, $type = null)
     {
         if (is_null($type)) {
@@ -51,24 +53,27 @@ class Database
         $this->stmt->bindValue($param, $value, $type);
     }
 
-
+    // execute query
     public function execute()
     {
         $this->stmt->execute();
     }
 
+    // menghasilkan seluruh data
     public function resultAll()
     {
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    // menghasilkan data hanya 1
     public function resultRow()
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    // untuk menghitung row count yang di tambahkan 
     public function rowCount()
     {
         return $this->stmt->rowCount();
